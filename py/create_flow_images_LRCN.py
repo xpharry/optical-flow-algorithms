@@ -46,7 +46,6 @@ for index in range(len(files)):
             next = cv2.cvtColor(im2, cv2.COLOR_BGR2GRAY)
 
             flow_image = np.zeros_like(im1);
-            flow_image[..., 1] = 255;
 
             flow = cv2.calcOpticalFlowFarneback(prvs, next, None, 0.5, 3, 15, 3, 5, 1.2, 0)
             mag, ang = cv2.cartToPolar(flow[..., 0], flow[..., 1])
