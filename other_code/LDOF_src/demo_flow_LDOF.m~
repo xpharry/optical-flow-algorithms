@@ -1,0 +1,47 @@
+
+clear
+close all
+root_dir=pwd;
+addpath(genpath(root_dir));
+
+
+im1=imread('im1_2.jpg');
+im2=imread('im2_2.jpg');
+
+verbose=0;
+[p,q,~]=size(im1);
+para=get_para_flow(p,q);
+
+
+[F,c1,c2]=LDOF('im1_2.jpg','im2_2.jpg',para,verbose);
+
+%check_flow_correspondence(im1,im2,F);
+% para.fb_check=0.1;                                          %% ForBackCheck 1
+% para.fb_check2=0.1;
+% [ON]=prune_flow_field(im1,im2,F,Fb,para,1);
+% 
+% figure,imshow(uint8(im1));
+% hold on;
+% [y,x]=find(ON);
+% plot(x,y,'.g','markersize',0.1)
+% fo=['/home/katef/Dropbox/html/images/'];
+% h=figure(1);clf;
+% imshow(im1);hold on;
+% plot(c1(:,1),c1(:,2),'oy','markersize',3);
+% axis image
+% save_tight(h,[fo 'im12_descr.jpg']);
+% h=figure(2);clf;
+% imshow(im2); hold on;
+% plot(c2(:,1),c2(:,2),'oy','markersize',3);
+% axis image;
+% save_tight(h,[fo 'im22_descr.jpg']);
+% 
+% flow_warp(im1,im2,F,1);
+% I2warped=warp_image(im2,F(:,:,1),F(:,:,2));
+flow_view=FlowToColor(F);
+imwrite(flow_view,[pwd '/view.png'],'png');
+% 
+% imwrite(im1,[fo 'im12.jpg']);
+% imwrite(im2,[fo 'im22.jpg']);
+% imwrite(uint8(I2warped),[fo 'im22_warped.jpg']);
+% imwrite(flow_view,[fo 'flow_view2.jpg']);

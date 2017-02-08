@@ -5,8 +5,8 @@ import numpy as np
 import cv2
 import time
 
-base = '/data/LRCN_DATA/frames';
-save_base = './save_flows'
+base = '~/LRCN_dataset/frames';
+save_base = '~/LRCN_dataset/save_flows'
 
 # obtain the file list
 files = os.listdir(base);
@@ -61,5 +61,6 @@ for index in range(len(files)):
             flow_image[..., 2] = cv2.normalize(mag, None, 0, 255, cv2.NORM_MINMAX);
 
             # cv2.imshow('flow_image{0}'.format(frames[k]), flow_image);
-            cv2.imwrite(base + '/' + video + '/' + frames[k], flow_image);
+            cv2.imwrite(save_base + '/' + video + '/' + frames[k], flow_image);
+            print(save_base + '/' + video + '/' + frames[k]);
             im1 = im2;
