@@ -6,6 +6,8 @@ function create_flow_images_LRCN(base, save_base)
 %
 %[1] Brox, Thomas, et al. "High accuracy optical flow estimation based on a theory for warping." Computer Vision-ECCV 2004. Springer Berlin Heidelberg, 2004. 25-36.
 
+  disp(datestr(datetime('now')));
+
   list = clean_dir(base);
   
   if ~isdir(save_base)
@@ -49,6 +51,8 @@ function create_flow_images_LRCN(base, save_base)
       end
     end
   end
+
+  disp(datestr(datetime('now')));
 
 function files = clean_dir(base)
   %clean_dir just runs dir and eliminates files in a foldr

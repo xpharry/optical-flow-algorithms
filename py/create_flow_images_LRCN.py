@@ -5,7 +5,10 @@ import numpy as np
 import cv2
 import time
 
-base = '~/LRCN_dataset/frames';
+# start
+print(time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+
+base = '/data/LRCN_dataset/frames';
 save_base = '~/LRCN_dataset/save_flows'
 
 # obtain the file list
@@ -63,3 +66,5 @@ for index in range(len(files)):
             cv2.imwrite(save_base + '/' + video + '/' + frames[k], flow_image);
             print(save_base + '/' + video + '/' + frames[k]);
             im1 = im2;
+
+print(time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
