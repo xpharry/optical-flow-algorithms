@@ -16,7 +16,7 @@ The guide for using can be found in its own "readme" file.
 
 # Our Python Implementation
 
-The code under the folder "py" are our python version and has been tested in Python 2.7.13 and OpenCV 3.2.
+The code under the folder "py" are our python version and has been tested in Python 3.5 and OpenCV 3.2.
 
 ## Example Use
 

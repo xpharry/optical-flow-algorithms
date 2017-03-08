@@ -1,11 +1,29 @@
+# -*- coding: utf-8 -*-
+"""
+Author: Peng Xu
+
+This code only accepts two frames for testing.
+
+"""
+
 import cv2
 import numpy as np
 import time
 
-print(time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
-frame1 = cv2.imread('../input/tennis492.jpg')
-frame2 = cv2.imread('../input/tennis493.jpg')
+frame1 = cv2.imread('gym1.jpg')
+frame2 = cv2.imread('gym2.jpg')
+
+if not (frame1.shape == frame2.shape):
+    print("The two image sizes do not match!")
+    width = frame1.shape[1]
+    height = frame1.shape[0]
+    frame2 = cv2.resize(frame2, (width, height), interpolation=cv2.INTER_AREA)
+
+# print(frame1.shape)
+# print(frame2.shape)
+
 prvs = cv2.cvtColor(frame1,cv2.COLOR_BGR2GRAY)
 next = cv2.cvtColor(frame2,cv2.COLOR_BGR2GRAY)
 
@@ -28,9 +46,4 @@ flow_image[...,2] = cv2.normalize(mag, None, 0, 255, cv2.NORM_MINMAX)
 
 cv2.imwrite('./flow_image_py.jpg', flow_image)
 
-# rgb = cv2.cvtColor(flow_image, cv2.COLOR_HSV2BGR)
-# cv2.imwrite('../output/opticalhsv.jpg', rgb)
-
-# np.savetxt('save_data.txt', flow_image[...,0], '%3d\n')
-
-print(time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
