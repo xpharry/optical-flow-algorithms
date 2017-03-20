@@ -67,7 +67,7 @@ if size(im1, 3) > 1
     ope.images  = cat(length(size(tmp1))+1, tmp1, tmp2);
 else
     
-    if isinteger(im1);
+    if isinteger(im1)
         im1 = double(im1);
         im2 = double(im2);
     end;
@@ -79,10 +79,8 @@ if ~isempty(ope.color_images)
     if size(im1, 3) > 1        
         % Convert to Lab space       
         im1 = RGB2Lab(im1);          
-        for j = 1:size(im1, 3);
-            im1(1:5,1:5,j)
+        for j = 1:size(im1, 3)
             im1(:,:,j) = scale_image(im1(:,:,j), 0, 255);
-            im1(1:5,1:5,j)
         end;        
     end;    
     ope.color_images   = im1;
@@ -92,5 +90,6 @@ end;
 uv  = compute_flow(ope, zeros([size(im1,1) size(im1,2) 2]));
 
 if nargout == 1
+    x=1
     uvo = uv;
 end;

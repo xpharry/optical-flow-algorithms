@@ -49,11 +49,6 @@ stv=tv(bord+1:end-bord,bord+1:end-bord);
 su=u(bord+1:end-bord,bord+1:end-bord);
 sv=v(bord+1:end-bord,bord+1:end-bord);
 
-disp(size(stu))
-disp(size(stv))
-disp(size(su))
-disp(size(su))
-
 % ignore a pixel if both u and v are zero 
 %ind2=find((stu(:).*stv(:)|sv(:).*su(:))~=0);
 ind2=find(abs(stu(:))>smallflow|abs(stv(:)>smallflow));
